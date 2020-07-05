@@ -25,6 +25,7 @@ services:
       - "3306:3306"
     volumes:
       - "./storage/mysql:/var/lib/mysql"
+      # - mysql-store:/var/lib/mysql
     environment:
       MYSQL_DATABASE: ${DB_DATABASE:-laravel}
       MYSQL_USER: ${DB_USERNAME:-root}
@@ -65,3 +66,13 @@ services:
       MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
       MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
       MINIO_REGION: ap-northeast-1
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+      - "9090:80"
+
+# volumes:
+#   mysql-store:
