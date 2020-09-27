@@ -48,9 +48,9 @@ destroy:
 destroy-volumes:
 	docker-compose down --volumes
 
-.PHONY: web
-web:
-	docker-compose exec web bash
+.PHONY: nginx
+nginx:
+	docker-compose exec nginx bash
 
 .PHONY: app
 app:
