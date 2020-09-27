@@ -21,8 +21,6 @@ init:
 	cp .env.example .env
 	docker-compose up -d --build
 	@make composer-install
-	@make migrate
-	@make seed
 	@make npm-install
 	docker-compose exec app php artisan key:generate
 	@echo Initialize Completed !!
@@ -87,10 +85,6 @@ seed:
 .PHONY: tinker
 tinker:
 	docker-compose exec app php artisan tinker
-
-.PHONY: test
-test:
-	docker-compose exec app php artisan test
 
 .PHONY: composer-install
 composer-install:
