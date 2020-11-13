@@ -1,7 +1,7 @@
 FROM php:7.4-fpm-alpine
 
 COPY ./php.ini /usr/local/etc/php/php.ini
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN apk --update --no-cache add \
   curl \
@@ -31,10 +31,6 @@ RUN apk --update --no-cache add \
   opcache \
   gd \
   intl \
-  redis && \
-  # 本家(https://packagist.org/)が不調な時は日本版ミラーサイトを使用
-  composer config -g repos.packagist composer https://packagist.jp && \
-  # composer plugin (https://github.com/hirak/prestissimo)
-  composer global require hirak/prestissimo
+  redis
 
 WORKDIR /app
