@@ -20,8 +20,8 @@ install-packages:
 init:
 	cp .env.example .env
 	docker-compose up -d --build
-	@make composer-install
-	@make yarn-install
+	@make composer
+	@make yarn
 	docker-compose exec app php artisan key:generate
 	@echo Initialize Completed !!
 
@@ -90,12 +90,12 @@ seed:
 tinker:
 	docker-compose exec app php artisan tinker
 
-.PHONY: composer-install
-composer-install:
+.PHONY: composer
+composer:
 	docker-compose exec app composer install
 
-.PHONY: yarn-install
-yarn-install:
+.PHONY: yarn
+yarn:
 	docker-compose exec node yarn
 
 .PHONY: config
