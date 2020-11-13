@@ -21,9 +21,7 @@ init:
 	cp .env.example .env
 	docker-compose up -d --build
 	@make composer-install
-	@make migrate
-	@make seed
-	@make npm-install
+	@make yarn-install
 	docker-compose exec app php artisan key:generate
 	@echo Initialize Completed !!
 
@@ -48,13 +46,17 @@ destroy:
 destroy-volumes:
 	docker-compose down --volumes
 
-.PHONY: web
-web:
-	docker-compose exec web bash
+.PHONY: nginx
+nginx:
+	docker-compose exec nginx bash
 
 .PHONY: app
 app:
 	docker-compose exec app bash
+
+.PHONY: node
+node:
+	docker-compose exec node sh
 
 .PHONY: asset
 asset:
@@ -88,17 +90,13 @@ seed:
 tinker:
 	docker-compose exec app php artisan tinker
 
-.PHONY: test
-test:
-	docker-compose exec app php artisan test
-
 .PHONY: composer-install
 composer-install:
 	docker-compose exec app composer install
 
-.PHONY: npm-install
-npm-install:
-	docker-compose exec app npm install
+.PHONY: yarn-install
+yarn-install:
+	docker-compose exec app yarn
 
 .PHONY: config
 config-clear:
