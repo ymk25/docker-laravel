@@ -96,7 +96,7 @@ composer-install:
 
 .PHONY: yarn-install
 yarn-install:
-	docker-compose exec app yarn
+	docker-compose exec node yarn
 
 .PHONY: config
 config-clear:
