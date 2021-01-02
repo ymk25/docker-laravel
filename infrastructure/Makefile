@@ -10,9 +10,9 @@ up:
 build:
 	docker-compose build --no-cache --force-rm
 
+#必要なパッケージを追加してください
 .PHONY: install-packages
 install-packages:
-	docker-compose exec app composer require --dev barryvdh/laravel-ide-helper
 	docker-compose exec app composer require --dev barryvdh/laravel-debugbar
 	docker-compose exec app composer require --dev phpstan/phpstan
 
@@ -102,8 +102,9 @@ yarn:
 config-clear:
 	docker-compose exec app php artisan config:clear
 
-.PHONY: ide-helper
-ide-helper:
+.PHONY: laravel-ide-helper
+laravel-ide-helper:
+	docker-compose exec app composer require --dev barryvdh/laravel-ide-helper
 	docker-compose exec app php artisan clear-compiled
 	docker-compose exec app php artisan ide-helper:generate
 	docker-compose exec app php artisan ide-helper:meta
