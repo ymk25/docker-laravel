@@ -68,6 +68,20 @@ services:
       MINIO_SECRET_KEY: ${AWS_SECRET_ACCESS_KEY:-password}
       MINIO_REGION: ${AWS_DEFAULT_REGION:-ap-northeast-1}
 
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8088:8080"
+    volumes:
+      - ./.swagger/openapi.yaml:/openapi.yaml
+    environment:
+      SWAGGER_JSON: /openapi.yaml
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:

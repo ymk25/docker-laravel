@@ -14,7 +14,6 @@ build:
 .PHONY: install-packages
 install-packages:
 	docker-compose exec app composer require --dev barryvdh/laravel-debugbar
-	docker-compose exec app composer require --dev phpstan/phpstan
 
 .PHONY: init
 init:
@@ -54,10 +53,6 @@ nginx:
 app:
 	docker-compose exec app bash
 
-.PHONY: node
-node:
-	docker-compose exec node sh
-
 .PHONY: asset
 asset:
 	docker-compose exec asset_watcher bash
@@ -96,7 +91,7 @@ composer:
 
 .PHONY: yarn
 yarn:
-	docker-compose exec node yarn
+	docker-compose exec app yarn
 
 .PHONY: config
 config-clear:
