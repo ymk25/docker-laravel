@@ -3,27 +3,27 @@ Build laravel development environment with docker-compose.
 
 ## Environment
 - nginx latest
-- PHP 7.4
-- MySQL 5.7
-- Redis 5.0
-- docker-compose 3.7
+- PHP 8.0
+- MySQL 8.0.26
+- Redis 6.0
+- docker-compose 3.9
 
 ## Usage
 ### Create Laravel Project
 ```
 $ git clone git@github.com:yashiki25/docker-laravel.git
-$ make
+$ make name=laravel-project
 ```
 
 #### Option
 - Laravel Version
 ```
-$ make v=7
+$ make v=^8.0
 ```
 
 - Application Name
 ```
-$ make v=7 name=laravel-project
+$ make name=laravel-project
 ```
 
 ### Initialization
