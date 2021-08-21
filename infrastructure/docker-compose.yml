@@ -7,13 +7,6 @@ x-env: &app
     - ".:/app:cached"
     - "./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
 
-x-env: &node
-  image: node:13.8.0-alpine
-  working_dir: "/app"
-  volumes:
-    - "./:/app:cached"
-  tty: true
-
 services:
   nginx:
     build: "./.docker/nginx"
@@ -29,9 +22,6 @@ services:
     <<: *app
     depends_on:
       - mysql
-
-  node:
-    <<: *node
 
   mysql:
     image: mysql:5.7
