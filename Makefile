@@ -16,7 +16,12 @@ create:
 	cp ./infrastructure/Makefile ${WORKDIR}
 	cat ./infrastructure/environments/.env.example >> ${WORKDIR}/.env.example
 	sed -i '' \
-		-e 's/DB_HOST=127.0.0.1/DB_HOST=mysql/g' \
-		-e 's/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/g' \
-		${WORKDIR}/.env.example
+    		-e 's/DB_HOST=127.0.0.1/DB_HOST=mysql/g' \
+    		-e 's/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/g' \
+    		${WORKDIR}/.env.example
+#For Linux
+#	sed -i \
+#		-e 's/DB_HOST=127.0.0.1/DB_HOST=mysql/g' \
+#		-e 's/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/g' \
+#		${WORKDIR}/.env.example
 	@echo Project Created !!
