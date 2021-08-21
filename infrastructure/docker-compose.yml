@@ -51,8 +51,8 @@ services:
       - "./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
 
 #  asset_watcher:
-#    <<: *node
-#    command: "yarn run watch-poll"
+#    <<: *app
+#    command: "yarn run dev-all:watch"
 #    ports:
 #      - "3000:3000"
 
