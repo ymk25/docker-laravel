@@ -24,7 +24,7 @@ services:
       - mysql
 
   mysql:
-    image: mysql:8.0.26
+    image: "./.docker/mysql"
     ports:
       - "3306:3306"
     volumes:
